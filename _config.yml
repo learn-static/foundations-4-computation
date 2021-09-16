@@ -1,0 +1,34 @@
+#######
+#
+# foundations-computation
+# basic template for Jekyll with GitHub Pages
+# https://github.com/learn-static/foundations-computation
+#
+#######
+
+#######
+# SITE SETTINGS
+#
+title: foundations-computation
+description: "a learn-static tool for teaching the basics of Jekyll, Liquid, and computational methods"
+year: 2021
+author: learn-static
+
+##########
+# location of code, the full url to your github repository
+source-code: https://github.com/learn-static/foundations-computation
+
+#######
+# BUILD SETTINGS [usually leave as is]
+#
+# Defaults to simplify front matter,
+# all files in the "pages" folder will be output at root of site
+defaults:
+  - scope:
+      path: "pages"
+    values:
+      layout: page
+      permalink: /:basename:output_ext
+
+# ignore stuff
+exclude: [docs/, Rakefile, README.md, LICENSE]
