@@ -8,4 +8,8 @@
 
 **Objectives**:
 
+- articulate the difference between a static site and a dynamic site
+- understand the basics of how Jekyll generates content using the Liquid templating language and data files
+- be able to recognize and edit Liquid code that uses the basic computational operations to present data in different views
+
 **External Resources**:
