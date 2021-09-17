@@ -15,3 +15,29 @@ Basic computational concepts with Liquid
 - Conditionals (flow control, if/else)
 - Iteration (for loops)
 
+
+
+Jekyll is a static site generator written in the Ruby langauge. Liquid is the templating language used by Jekyll to create data driven features. 
+
+What is a Template? What is a templating language? 
+
+Why do that? How do they work?
+
+Variable - explanation
+
+Activity: 
+
+Array - explanation
+
+Activity: 
+
+Iteration - explanation
+
+Activity:  
+
+Conditionals - explanation
+
+Activity: 
+
+
+Put it all together, connect with the others
