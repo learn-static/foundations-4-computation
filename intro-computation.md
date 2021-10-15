@@ -12,7 +12,7 @@ After completing this module, one should be able to:
 
 [Jekyll](https://jekyllrb.com/) is a static web generator that iterates over a directory of files in order to create a static website. A static site refers to a site that does not use a database to generate its content. This how the web used to work in the 90s and early 2000s. Most sites you use on a daily basis, especially social media and news/entertainment sites, are database-driven endeavors that create the site on the fly when you visit them. Jekyll creates the web site before you visit them, which makes them much easier to secure, load, and keep working. 
 
-ALERT on Iterate -- define the term and talk about its importance
+>>> ALERT on Iterate -- I'm going to use this word a lot, because that's what Jekyll (and many other generators and algorithms) does. To iterate means to "perform repeatedly." In our case then, Jekyll performs over the data in your site over and over, repeatedly, using that data together with the templates we'll introduce soon, to repeatedly create web pages featuring repeated features (such as a header and footer).
 
 Note that both types of web "generators" -- static and dynamic -- use the concepts we'll explain below (variables, templates, for loops, and if-then statements) to create content for their site. Jekyll just does this work before hand.
 
@@ -22,7 +22,7 @@ So with this module, and the step by step instructions below, we hope to bring a
 
 ## Get the Site Running
 
-Before we begin, you'll need to turn on github pages so that you can see the changes you make live on the web. This 
+Before we begin, you'll need to turn on github pages so that you can see the changes you make live on the web.  
 
 ## Variables
 
@@ -49,13 +49,13 @@ Think of a directory with names, phone numbers, email addresses and pictures. If
 
 **Activity**
 
-1. On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensibl eorder. 
+1. On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensible order. 
 
 (more info and screen shots about what where to edit)
 
 ## Array
 
-You didn't know it, but you just were working with an array. An array, simply, is a list that a computer program can iterate over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal. 
+You didn't know it, but you just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal, or, to put it in terms of the spreadsheet you worked in during the last module, a list of rows, and a list of cells for each row. 
 
 **Activity**
 
