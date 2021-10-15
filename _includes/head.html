@@ -1,0 +1,8 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+{% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+<link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+<!-- load style sheets -->
+<link rel="stylesheet" href="{{ '/assets/lib/bootstrap.min.css' | relative_url }}"type="text/css">
+{% if page.layout == 'map' %}<link rel="stylesheet" href="{{ '/assets/lib/leaflet/leaflet.css' | relative_url }}">{% endif %}
