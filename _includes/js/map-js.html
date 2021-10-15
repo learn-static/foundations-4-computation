@@ -21,7 +21,7 @@
     /* init map and set zoom */
     var map = L.map('map').setView([40.206097307852126, -98.40680546951863], 5); 
 
-    /* add map layer */
+    /* add base map */
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
     }).addTo(map);
@@ -33,11 +33,13 @@
         layer.bindPopup(popupTemplate);
     }
 
+    /* function to add objects to map */
     function objectMarkers(feature,latlng) {
         var marker = L.marker(latlng);
         return marker;
     }
 
+    /* use geoJson features to add objects to map */
     L.geoJson(geodata, {
         onEachFeature: objectPopups,
         pointToLayer: objectMarkers
