@@ -1,0 +1,47 @@
+{%- assign items = site.data.pets | where_exp: 'item','item.latitude' -%}
+<!-- load leaflet dependencies -->
+<script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
+
+<script>
+(function(){
+    /* add collection map data */
+    var geodata = { "type": "FeatureCollection", "features": [ 
+    {% for item in items %}
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[{{ item.longitude | strip }},{{ item.latitude | strip }}] }, "properties":
+    { 
+        "title": {{ item.name | escape | jsonify }}, 
+        "location": {{ item.location | jsonify }},
+        "image": '/images/' + {{ item.image | jsonify }}, 
+        "owner": {{ item.owner | jsonify }}, 
+        "type": {{ item.type | jsonify }}, 
+        "age": {{ item.age | jsonify }}
+    } }{% unless forloop.last %}, {% endunless %}{% endfor %}
+    ]};
+
+    /* init map and set zoom */
+    var map = L.map('map').setView([40.206097307852126, -98.40680546951863], 5); 
+
+    /* add map layer */
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+    }).addTo(map);
+
+    /* object popup function */
+    function objectPopups(feature, layer) {
+        /* set up popup content */
+        var popupTemplate = '<h4>' + feature.properties.title + '</h4><div class="text-center"><img class="mapthumb img-thumb" src="' +  feature.properties.image + '" alt="item thumbnail"></div><p class="mt-1"><strong>Location:</strong> ' + feature.properties.location + '<br><strong>Pet Type:</strong> ' + feature.properties.type +'</p>';
+        layer.bindPopup(popupTemplate);
+    }
+
+    function objectMarkers(feature,latlng) {
+        var marker = L.marker(latlng);
+        return marker;
+    }
+
+    L.geoJson(geodata, {
+        onEachFeature: objectPopups,
+        pointToLayer: objectMarkers
+    }).addTo(map)
+
+})();
+</script>
