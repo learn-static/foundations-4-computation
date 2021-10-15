@@ -10,7 +10,7 @@ layout: default
         {% for p in pets %}
         <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
             <div class="card">
-                <img class="card-img-top" src="/images/{{ p.image | relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
+                <img class="card-img-top" src="{{ p.image | prepend: 'images/' |relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
                 <div class="card-body text-center">
                     <h4 class="card-title text-dark">{{ p.type }}</h4>
                     <p class="card-text">
