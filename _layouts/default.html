@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en" class="h-100">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-        {% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
-        <link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+        {% include head.html %}
     </head>
     <body class="d-flex flex-column h-100">
+        {% include header.html %}
         <main role="main" aria-label="Content" class="mb-4 flex-shrink-0">
         {{ content }}
         </main>
+        {% include footer.html %}
+        {% include foot.html %}
     </body>
 </html>
