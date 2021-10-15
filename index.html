@@ -1,20 +1,31 @@
 ---
+title: Home
 layout: default
 ---
 
-<div class="row">
-{% for pet in site.data.pets%}
- <div class="col-6">
-  <div class="card">
-  <img class="card-img-top" src="../images/{{pet.img}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{pet.type}}</h5>
-    <p class="card-text">{{pet.name}}</p>
-    <a href="#" class="btn btn-primary">{{pet.contact}}</a>
-  </div>
-  </div>
-  </div>
-  {% endfor %}
+{% assign pets = site.data.pets %}
+
+<div class="container my-4">
+    <div class="row">
+        {% for p in pets %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <img class="card-img-top" src="/images/{{ p.image | relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-dark">{{ p.type }}</h4>
+                    <p class="card-text">
+                        {{p.name}}
+                    </p><p class="card-text">
+                        <strong>Age:</strong> {{ p.age }} <br>
+                        <strong>Owner:</strong> {{ p.owner }} <br>
+                        <strong>Contact:</strong> {{ p.contact }} <br>
+                        <strong>Location:</strong> {{ p.location }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Call {{p.owner}} to Rent!</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-  
-  
