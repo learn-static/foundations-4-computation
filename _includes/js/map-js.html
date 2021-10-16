@@ -11,7 +11,7 @@
     { 
         "title": {{ item.name | escape | jsonify }}, 
         "location": {{ item.location | jsonify }},
-        "image": '/images/' + {{ item.image | jsonify }}, 
+        "image": {{ '/images/' | relative_url | append: item.image | jsonify }}, 
         "owner": {{ item.owner | jsonify }}, 
         "type": {{ item.type | jsonify }}, 
         "age": {{ item.age | jsonify }}
