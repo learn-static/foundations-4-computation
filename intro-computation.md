@@ -80,11 +80,11 @@ Jekyll often defines its variables in a `_config.yml` file in the root of the re
   - The title in the footer at the bottom of each page has changed. 
 5. Explore how this happens in the code: 
   - Open up the file `index.html`
-  - At the top, you can see this line: `<h1 class="text-center my-5">{%raw%}{{site.title}}{% end raw %}</h1>`
-    - `{%raw%}{{site.title}}{% end raw %}` is the variable here. It's pulling data from the value you set in your _config.yml.
-    - If you find this redundant, go ahead and just delete it, or replace `{%raw%}{{site.title}}{% end raw %}` with something else. You don't want to use curly brackets if you replace it, just text. Jekyll reads anything surrounded by two curly brackets as a variable. 
+  - At the top, you can see this line: `<h1 class="text-center my-5">{{site.title}}</h1>`
+    - `{{site.title}}` is the variable here. It's pulling data from the value you set in your _config.yml.
+    - If you find this redundant, go ahead and just delete it, or replace `{{site.title}}` with something else. You don't want to use curly brackets if you replace it, just text. Jekyll reads anything surrounded by two curly brackets as a variable. 
   - Now open up the `_includes` folder and then check out the `header.html` file and the `footer.html` file. 
-    - Can you find the `{%raw%}{{site.title}}{% end raw %}` in these files as well? 
+    - Can you find the `{{site.title}}` in these files as well? 
 
 
 ## Template 
