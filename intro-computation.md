@@ -88,13 +88,13 @@ Jekyll often defines its variables in a `_config.yml` file in the root of the re
     - Can you find the `{{site.title}}` in these files as well? 
     - These two files are *Templates* that Jekyll *includes* (thus the name of the folder) on multiple pages
 
-
-
 ## Template 
 
 A template is typically mixture of HTML elements (often with specific classes to determine their style) mixed with variables. This allows a website to build repeating elements with a minimal amount of code. 
 
 Think of a directory with names, phone numbers, email addresses and pictures. If we can just create one template for how each person's information shows up on the page, that saves us a lot of time and coding -- and puts more emphasis on clean data then on repeated code. 
+
+Jekyll uses the templating language Liquid to create templates. 
 
 **Activity**
 
@@ -107,23 +107,30 @@ On our home page, there are several "cards" that display the animals' names, pho
   - Change `{{p.type}}` to `{{p.name}}`
 3. Commit your changes at the bottom of the page. 
 4. Check your site and see the change. Each pet's name should now be at the top. 
+5. Let's make one more edit, to streamline the cards a bit. 
+  - Go back to `index.html` and click the pencil to start editing it. 
+  - Let's move the `{{p.type}}` to the card title line so that it looks like: `<h4 class="card-title text-dark">{{ p.name }}, a {{p.type}}</h4>`
+  - We're adding a `, a {{p.type}}` so that the type of pet will be indicated along with the pet's name. This uses some text `, a ` with a variable `{{p.type}}`
+  - Delete the `<p>`tag that formerly held the type variable. Be sure to delete the `</p>` at the end as well as the `<p class="card-text">`
+6. Commit the change and check out your new cards. 
 
-{:.w-50}
-!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
+{:.w-50}!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
 
 to 
 
-{:.w-50}
-!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
-
-
-(more info and screen shots about what where to edit)
+{:.w-50}!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
 
 ## Array
 
-You didn't know it, but you just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal, or, to put it in terms of the spreadsheet you worked in during the last module, a list of rows, and a list of cells for each row. 
+You just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal, or, to put it in terms of the spreadsheet you worked in during the last module, a list of rows, and a list of cells for each row. 
+
+An array is powerful because you can sort it and use logic with it to create curated features. Let's explore some of the ways Jekyll can use the Liquid Templating languge to generate and curate lists. 
 
 **Activity**
+
+Let's simply list how many pets are available. 
+
+1. At the top of your `index.html` page, you'll see there's a 
 
 One of the qualities that we have that would help this website are photographs of the pets. Let's add photos to the cards so that we can publish the images of all these cute pets. 
 
