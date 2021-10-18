@@ -35,7 +35,8 @@ Copy code from another repository into your own and start editing it.
     4. Leave the "Include all branches" option **Unchecked**!
     5. Click on the green button "**Create repository from template**". This will take you to your new repository.
 
-!["Create a new repository"](https://github.com/learn-static/foundations-4-computation/blob/main/images/new-repo-computation.png)
+{:.w-75}
+!["Create a new repository"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/new-repo-computation.png)
 
 
 # Step 2. Activate GitHub Pages
@@ -85,6 +86,8 @@ Jekyll often defines its variables in a `_config.yml` file in the root of the re
     - If you find this redundant, go ahead and just delete it, or replace `{{site.title}}` with something else. You don't want to use curly brackets if you replace it, just text. Jekyll reads anything surrounded by two curly brackets as a variable. 
   - Now open up the `_includes` folder and then check out the `header.html` file and the `footer.html` file. 
     - Can you find the `{{site.title}}` in these files as well? 
+    - These two files are *Templates* that Jekyll *includes* (thus the name of the folder) on multiple pages
+
 
 
 ## Template 
@@ -95,7 +98,24 @@ Think of a directory with names, phone numbers, email addresses and pictures. If
 
 **Activity**
 
-1. On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensible order. 
+On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensible order. 
+
+1. Open the `index.html` file that can be found at the root (home page) of your repository. 
+2. Find the variables `{{p.name}}` and `{{p.type}}`
+  - If you look at the web page, you can see the pet's name is below the type. Let's switch them. 
+  - Change `{{ p.name}}` to `{{p.type}}`
+  - Change `{{p.type}}` to `{{p.name}}`
+3. Commit your changes at the bottom of the page. 
+4. Check your site and see the change. Each pet's name should now be at the top. 
+
+{:.w-50}
+!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
+
+to 
+
+{:.w-50}
+!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
+
 
 (more info and screen shots about what where to edit)
 
