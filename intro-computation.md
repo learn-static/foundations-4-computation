@@ -35,8 +35,7 @@ Copy code from another repository into your own and start editing it.
     4. Leave the "Include all branches" option **Unchecked**!
     5. Click on the green button "**Create repository from template**". This will take you to your new repository.
 
-{:.w-75}
-!["Create a new repository"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/new-repo-computation.png)
+!["Create a new repository"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/new-repo-computation_sm.png)
 
 
 # Step 2. Activate GitHub Pages
@@ -114,11 +113,11 @@ On our home page, there are several "cards" that display the animals' names, pho
   - Delete the `<p>`tag that formerly held the type variable. Be sure to delete the `</p>` at the end as well as the `<p class="card-text">`
 6. Commit the change and check out your new cards. 
 
-{:.w-50}!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
+!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
 
 to 
 
-{:.w-50}!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
+!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
 
 ## Array
 
