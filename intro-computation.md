@@ -124,72 +124,183 @@ to
 
 You just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal, or, to put it in terms of the spreadsheet you worked in during the last module, a list of rows, and a list of cells for each row. 
 
-An array is powerful because you can sort it and use logic with it to create curated features. Let's explore some of the ways Jekyll can use the Liquid Templating languge to generate and curate lists. 
+An array is powerful because you can sort it and use logic with it to create curated features. Let's explore some of the ways Jekyll can use the Liquid Templating language to generate and curate lists. 
 
 **Activity**
 
 Let's simply list how many pets are available. 
 
-1. At the top of your `index.html` page, you'll see there's a 
+1. At the top of your `index.html` page, you'll see there's a varaible assigned to our list of pets. IT looks like this
 
-One of the qualities that we have that would help this website are photographs of the pets. Let's add photos to the cards so that we can publish the images of all these cute pets. 
+```
+    {% assign pets = site.data.pets %}
+```
 
-(Go through adding to the template, using the arrays used previously)
+2. Let's list how many pets are currently available on our website by adding the following line just below the `<h1>{{site.title}}</h1>` line: 
 
-(then create a new array of colors, and use that as a cycle background for the card backgrounds)
+```
+    <h3>Pets available: {{ pets.size }}</h3>
+```
 
-## Conditionals
+3. Say we want to know how many of these pets are dogs and cats. We'll need to use a [where](https://shopify.github.io/liquid/filters/where/) filter in liquid to filter our array. Try adding this just below the pets available line: 
 
-The color on those backgrounds, however, is kind of random. It's just cycling through with no logic. Let's add some logic so the colors match a quality. 
+```
+    <h3>Dogs available: {{ pets | where: 'type', 'dog' | size }}</h3>
+```
 
-**Activity**
+The pipe `|` character is used in liquid to break up actions. This command is saying: 
+  - go through the list of pets (which is our pets.csv spreadsheet)
+  - now limit that list to just those pets whose type is listed as "dog" 
+  - print out the size (number) of pets that whose type is "dog"
 
-Figure out how to use if then to create a background based on a quality. 
+4. Now go through and add lines that list how many cats and parrots there are. Add the following: 
 
-## Iteration -- ForLoop
+```
+    <h3>Cats available: {{ pets | where: 'type', 'cat' | size }}</h3>
+    <h3>Parrots available: {{ pets | where: 'type', 'parrot' | size }}</h3>
+```
 
-***Should this go before?***
+When you're done, your pets available section should look like this: 
 
-Everything is already a forloop. 
-
-Oh it's all so confusing. 
-
-Repo contains:
-- Explanation of what is Jekyll
-- Sample data
-
-Explore how Jekyll builds pages out of modular component parts (follow the path of a markdown file through layouts and includes)
-
-Basic computational concepts with Liquid
-- Syntax (how to write a command)
-- Variables 
-- Arrays
-- Conditionals (flow control, if/else)
-- Iteration (for loops)
+!["Pets, Dogs, Cats, Parrots Available"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/pets-available.png)
 
 
+5. This information could be much simpler though, don't you think. Let's see if we can get it all one line. Try to do it yourself first, by creating a parenthes and listing the number of dogs, cats, and parrots there. 
 
-Jekyll is a static site generator written in the Ruby langauge. Liquid is the templating language used by Jekyll to create data driven features. 
+Here's how that should look: 
 
-What is a Template? What is a templating language? 
+```
+    <h3>Pets available: {{ pets.size }} ({{ pets | where: 'type', 'dog' | size }} dogs, {{ pets | where: 'type', 'cat' | size }} cats, and {{ pets | where: 'type', 'parrot' | size }} parrot)</h3>
+```
 
-Why do that? How do they work?
+## The For Loop! + If/Then Statements
 
-Variable - explanation
+Filtering out lists is a common computational practice, and the above is one way to find the count of a filtered list. But what if you wanted to, say, list the names of all the dogs available. 
 
-Activity: 
+To do something like this, you can a
+You can also use [forloops](https://shopify.github.io/liquid/tags/iteration/) and [if/then statements](https://shopify.github.io/liquid/tags/control-flow/) to manipulate which parts of your lists get featured and/or printed on the page.
 
-Array - explanation
+A for loop ***loops*** over an array and does something ***for*** each type of filter you request. 
 
-Activity: 
+Our home page uses a for loop and the template we explored above to create a card for each pet. Lets look at it
 
-Iteration - explanation
+```
+        {% for p in pets %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <img class="card-img-top" src="{{ p.image | prepend: 'images/' |relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-dark">{{ p.name }}, a {{p.type}}</h4>
+                    <p class="card-text">
+                        <strong>Age:</strong> {{ p.age }} <br>
+                        <strong>Owner:</strong> {{ p.owner }} <br>
+                        <strong>Contact:</strong> {{ p.contact }} <br>
+                        <strong>Location:</strong> {{ p.location }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Call {{p.owner}} to Rent!</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
 
-Activity:  
+```
 
-Conditionals - explanation
+You can see that it starts with a `{% for p in pets %}` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. So if you wanted to change the `p` to `pet` to be more verbose, it would look like this: 
 
-Activity: 
+```
+        {% for pet in pets %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <img class="card-img-top" src="{{ pet.image | prepend: 'images/' |relative_url }}" alt="Image of {{ pet.name }}, a {{ pet.type }}">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-dark">{{ pet.name }}, a {{pet.type}}</h4>
+                    <p class="card-text">
+                        <strong>Age:</strong> {{ pet.age }} <br>
+                        <strong>Owner:</strong> {{ pet.owner }} <br>
+                        <strong>Contact:</strong> {{ pet.contact }} <br>
+                        <strong>Location:</strong> {{ pet.location }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Call {{pet.owner}} to Rent!</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+```
 
+So the code producing the card for each pet would look differnt, but **the output would be the exact same!**
 
-Put it all together, connect with the others
+## If/Then Statements
+
+A forloop combined with an if/then statement is really powerful way to utilize data on a website. 
+
+If/Then statements can look at the field reference and do a specific action based on the logic included in the statement. So, for instance, if you'd like every card that features a dog to have a red background you would change the `<div class="card">` line in our template to add a bit of inline CSS if the for loop was iterating over a pet whose type was "dog": 
+
+```
+            <div class="card" {% if p.type == 'dog' %}style="background:red"{% endif %}>
+```
+
+Notice that an if statement, just like a for statement, needs to be ended with **end** statement. This is called closing a function. So `{% endif %}` closes an `{% if ... %}` statement and `{% endfor %}` closes a `{% for ... %}` statement.
+
+The if/then statement above uses the operator `==` to say if the type is exactly dog, do this. There are a number of operators that can be used on their own and in combination. Here's a list: 
+
+== |equals
+!= |does not equal
+> |greater than
+< |less than
+>= |greater than or equal to
+<= |less than or equal to
+or |logical or
+and |logical and
+
+It takes some time to get familiar with those, and many of them are meant for math type logic. In our case, for building a website, using the equals (`==`) and does not equal (`!=`) operators together with `and` and `or` is pretty powerful. 
+
+Liquid also has an operator that's great for working with text. It's called `contains` and it helps to perform if/then statements on texts. 
+
+So in the example above, we could have written {% if p.type contains 'dog' %}style="background:red"{% endif %} and gotten the same red background for each card for a dog. 
+
+Let's use our activity to explore this a bit further
+
+**ACTIVITY**
+
+The red background is a bit much. Let's remove it by changing the  But there's a subtle change we can make that will help polish our site. 
+
+One small detail on our cards that's bugging me is that each button says "Call ___ to Rent!" but some people's contact method is email. Let's use an If/Then statement to change that. 
+
+1. Find the button portion of our template. IT looks like 
+
+```
+                    <a href="#" class="btn btn-primary">Call {{p.owner}} to Rent!</a>
+```
+
+***Note that the variable I'm using in this example is "p" and not "pet" -- so `{{p.owner}}` and not `{{pet.owner}}` -- if you changed the template while going through the explanations above, you can just adjust your code to use "pet" rather than p***
+
+2. Let's add an if/then statement that will say "Call" or "Email" depending on what the "contact" field contains for each pet listing. 
+
+   - first we have to determine what piece of text we could distinguish the two types of information we want to filter: 
+   - So we ask: what could a field with an email address contain that would always differentiate it from a phone number
+   - An @ sign should work! 
+   - Let's try it: 
+
+```
+                    <a href="#" class="btn btn-primary">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
+```
+
+You see we've add an `{% else %}` command. This is essentially saying to the for loop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
+
+3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `{% elsif %}`
+
+This command will let us add a little more logic to the forloop. We'll make the button for a dogs purple, the button for a cat yellow and the button for a parrot green, like so: 
+
+```
+                    <a href="#" class="btn btn-primary" style="background-color:{% if p.type contains 'dog' %}purple{% elsif p.type contains 'cat' %}yellow{%  elsif p.type contains 'parrot'  %}green{% endif %}">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
+```
+
+Note that I didn't have to add a final `elsif` statement for the "parrot" type because I knew that was the only one left after cat and dog. You could, however, add an elsif statement there for a parrot and continue on for any additional pet added to the array. 
+
+## Conclusion
+
+So we've gotten pretty complicated in this module. I hope you were able to see the logic in all of this. Remember that we are using a specific language to do make things happen on our web page with regards to lists (arrays) and the template, but these concepts -- forloops, if/then statements, templates, arrays -- are universal to all web programming languages. 
+
+And getting to know them better can help you think about data and work with data in increasingly complex ways. 
+
+Thank you for your time and attention and please contact Olivia at omwikle@uidaho.edu with any questions. 
