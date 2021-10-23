@@ -67,25 +67,25 @@ Jekyll often defines its variables in a `_config.yml` file in the root of the re
 ***Activity***
 
 1. Open the `_config.yml` file. 
-  1. *Technical Note:* A YML file is a file that lists keys and their values. So title, author, etc., but just in a textual list. The keys start on the left, and end with a colon and a space. The values are entered after that space. 
+    1. *Technical Note:* A YML file is a file that lists keys and their values. So title, author, etc., but just in a textual list. The keys start on the left, and end with a colon and a space. The values are entered after that space. 
 2. You'll see a number of "keys" or elements listed down the left side of the file, followed by colons. 
-  1. For example, the title variable looks like `title: foundations-computation` or title `title: foundations-data` if you're continuing from the previous lesson.
+    1. For example, the title variable looks like `title: foundations-computation` or title `title: foundations-data` if you're continuing from the previous lesson.
 3. Let's change that to the title of our website. "Pets for Rent"
-  1. Click the pencil icon at the top right of the window (near the "Raw" and "Blame" buttons)
-  2. Change the title value to "Pets for Rent" 
-  3. Commit your change at the bottom of the page. 
+    1. Click the pencil icon at the top right of the window (near the "Raw" and "Blame" buttons)
+    2. Change the title value to "Pets for Rent" 
+    3. Commit your change at the bottom of the page. 
 4. Go refresh your web page for the repository. In a minute or so, you'll be able to visit the web page and see what's changed
-  1. The title of the page has changed in the nav menu at the top on all pages
-  2. The title at the top of the home page has changed. 
-  3. The title in the footer at the bottom of each page has changed. 
+    1. The title of the page has changed in the nav menu at the top on all pages
+    2. The title at the top of the home page has changed. 
+    3. The title in the footer at the bottom of each page has changed. 
 5. Explore how this happens in the code: 
-  1. Open up the file `index.html`
-  2. At the top, you can see this line: `<h1 class="text-center my-5">{{site.title}}</h1>`
-    1. `{{site.title}}` is the variable here. It's pulling data from the value you set in your _config.yml.
-    2. If you find this redundant, go ahead and just delete it, or replace `{{site.title}}` with something else. You don't want to use curly brackets if you replace it, just text. Jekyll reads anything surrounded by two curly brackets as a variable. 
-  3. Now open up the `_includes` folder and then check out the `header.html` file and the `footer.html` file. 
-    1. Can you find the `{{site.title}}` in these files as well? 
-    2. These two files are *Templates* that Jekyll *includes* (thus the name of the folder) on multiple pages
+    1. Open up the file `index.html`
+    2. At the top, you can see this line: `<h1 class="text-center my-5">{{site.title}}</h1>`
+        1. `{{site.title}}` is the variable here. It's pulling data from the value you set in your _config.yml.
+        2. If you find this redundant, go ahead and just delete it, or replace `{{site.title}}` with something else. You don't want to use curly brackets if you replace it, just text. Jekyll reads anything surrounded by two curly brackets as a variable. 
+    3. Now open up the `_includes` folder and then check out the `header.html` file and the `footer.html` file. 
+        1. Can you find the `{{site.title}}` in these files as well? 
+        2. These two files are *Templates* that Jekyll *includes* (thus the name of the folder) on multiple pages
 
 ## Template 
 
