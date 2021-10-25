@@ -113,11 +113,28 @@ On our home page, there are several "cards" that display the animals' names, pho
     4. Delete the `<p>`tag that formerly held the type variable. Be sure to delete the `</p>` at the end as well as the `<p class="card-text">`
 6. Commit the change and check out your new cards. 
 
-!["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
+Your template should now look like this: 
 
-to 
+```
+{% for p in pets %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+            <div class="card">
+                <img class="card-img-top" src="{{ p.image | prepend: 'images/' |relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-dark">{{ p.name }}, a {{p.type}}</h4>
+                    <p class="card-text">
+                        <strong>Age:</strong> {{ p.age }} <br>
+                        <strong>Owner:</strong> {{ p.owner }} <br>
+                        <strong>Contact:</strong> {{ p.contact }} <br>
+                        <strong>Location:</strong> {{ p.location }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Call {{p.owner}} to Rent!</a>
 
-!["How the template looks after the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-after.png)
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+```
 
 ## Array
 
