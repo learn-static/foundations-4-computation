@@ -101,9 +101,9 @@ On our home page, there are several "cards" that display the animals' names, pho
 
 1. Open the `index.html` file that can be found at the root (home page) of your repository. 
 2. Find the variables `{{p.name}}` and `{{p.type}}`
-  - If you look at the web page, you can see the pet's name is below the type. Let's switch them. 
-  - Change `{{ p.name}}` to `{{p.type}}`
-  - Change `{{p.type}}` to `{{p.name}}`
+  1. If you look at the web page, you can see the pet's name is below the type. Let's switch them. 
+  2. Change `{{ p.name}}` to `{{p.type}}`
+  3. Change `{{p.type}}` to `{{p.name}}`
 3. Commit your changes at the bottom of the page. 
 4. Check your site and see the change. Each pet's name should now be at the top. 
 5. Let's make one more edit, to streamline the cards a bit. 
