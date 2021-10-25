@@ -328,7 +328,7 @@ You see we've add an `{% else %}` command. This is essentially saying to the for
 
 3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `{% elsif %}`
 
-This command will let us add a little more logic to the forloop. We'll make the button for a dogs purple, the button for a cat yellow and the button for a parrot green, like so: 
+This command will let us add a little more logic to the forloop. We'll make the button for a dog purple, the button for a cat yellow and the button for a parrot green, like so: 
 
 ```
                     <a href="#" class="btn btn-primary" style="background-color:{% if p.type contains 'dog' %}purple{% elsif p.type contains 'cat' %}yellow{%  elsif p.type contains 'parrot'  %}green{% endif %}">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
