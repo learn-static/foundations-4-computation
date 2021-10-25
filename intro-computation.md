@@ -107,10 +107,10 @@ On our home page, there are several "cards" that display the animals' names, pho
 3. Commit your changes at the bottom of the page. 
 4. Check your site and see the change. Each pet's name should now be at the top. 
 5. Let's make one more edit, to streamline the cards a bit. 
-  - Go back to `index.html` and click the pencil to start editing it. 
-  - Let's move the `{{p.type}}` to the card title line so that it looks like: `<h4 class="card-title text-dark">{{ p.name }}, a {{p.type}}</h4>`
-  - We're adding a `, a {{p.type}}` so that the type of pet will be indicated along with the pet's name. This uses some text `, a ` with a variable `{{p.type}}`
-  - Delete the `<p>`tag that formerly held the type variable. Be sure to delete the `</p>` at the end as well as the `<p class="card-text">`
+    1. Go back to `index.html` and click the pencil to start editing it. 
+    2. Let's move the `{{p.type}}` to the card title line so that it looks like: `<h4 class="card-title text-dark">{{ p.name }}, a {{p.type}}</h4>`
+    3. We're adding a `, a {{p.type}}` so that the type of pet will be indicated along with the pet's name. This uses some text `, a ` with a variable `{{p.type}}`
+    4. Delete the `<p>`tag that formerly held the type variable. Be sure to delete the `</p>` at the end as well as the `<p class="card-text">`
 6. Commit the change and check out your new cards. 
 
 !["How the template looks before the edit"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/template-before.png)
@@ -298,7 +298,7 @@ Note that I didn't have to add a final `elsif` statement for the "parrot" type b
 
 ## Conclusion
 
-So we've gotten pretty complicated in this module. I hope you were able to see the logic in all of this. Remember that we are using a specific language to do make things happen on our web page with regards to lists (arrays) and the template, but these concepts -- forloops, if/then statements, templates, arrays -- are universal to all web programming languages. 
+So we've covered a great deal of ground in this module. I hope you were able to see the logic in all of this. Remember that we are using a specific language (*Liquid*) to do make things happen on our web page with regards to lists (arrays) and templates, but these concepts -- forloops, if/then statements, templates, arrays -- are universal to all web programming languages. 
 
 And getting to know them better can help you think about data and work with data in increasingly complex ways. 
 
