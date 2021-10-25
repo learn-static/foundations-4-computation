@@ -95,11 +95,11 @@ Think of a directory with names, phone numbers, email addresses and pictures. If
 
 Jekyll uses the templating language Liquid to create templates. 
 
+>>> Before we jump into the next activity. Remember we are working with the [pets.csv](_data/pets.csv) that was corrected in the [Data module](https://github.com/learn-static/foundations-3-data) that you may have completed previous to this module. If you did not do that module, go to the _data folder and look at the pets.csv file to get familiar with the data listed. 
+
 **Activity**
 
 On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensible order. 
-
->>> Remember we are working with the [pets.csv](_data/pets.csv) that was corrected in the [Data module](https://github.com/learn-static/foundations-3-data) that you may have completed previous to this module. If you did not do that module, go to the _data folder and look at the pets.csv file to get familiar with the data listed. 
 
 1. Open the `index.html` file that can be found at the root (home page) of your repository. 
 2. Find the variables `{{p.name}}` and `{{p.type}}`
@@ -118,7 +118,7 @@ On our home page, there are several "cards" that display the animals' names, pho
 Your template should now look like this: 
 
 ```
-{% for p in pets %}
+        {% for p in pets %}
         <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
             <div class="card">
                 <img class="card-img-top" src="{{ p.image | prepend: 'images/' |relative_url }}" alt="Image of {{ p.name }}, a {{ p.type }}">
@@ -131,11 +131,11 @@ Your template should now look like this:
                         <strong>Location:</strong> {{ p.location }}
                     </p>
                     <a href="#" class="btn btn-primary">Call {{p.owner}} to Rent!</a>
-
                 </div>
             </div>
         </div>
         {% endfor %}
+
 ```
 
 ## Array
@@ -162,16 +162,22 @@ Let's simply list how many pets are available.
     <h3>Pets available: {{ pets.size }}</h3>
 ```
 
-3. Say we want to know how many of these pets are dogs and cats. We'll need to use a [where](https://shopify.github.io/liquid/filters/where/) filter in liquid to filter our array. Try adding this just below the pets available line: 
+The [`size` filter](https://shopify.github.io/liquid/filters/size/) in Liquid will add up the number of items in an array and let you print that out or use the number for certain calculations. 
+
+[Liquid filters](https://shopify.github.io/liquid/basics/introduction/#filters) help you to manipulate and precisely select what you'd like to display on a web page. 
+
+3. Say we want to know how many of these pets are dogs and cats. We'll need to add another filter to our `size` filter. In this case, we'll add a [where](https://shopify.github.io/liquid/filters/where/) filter in liquid to filter our array. 
+
+Try adding this just below the pets available line: 
 
 ```
     <h3>Dogs available: {{ pets | where: 'type', 'dog' | size }}</h3>
 ```
 
-The pipe `|` character is used in liquid to break up actions. This command is saying: 
+The pipe `|` character is used in liquid to break actions into a series of sequential steps. This command is saying: 
   - go through the list of pets (which is our pets.csv spreadsheet)
   - now limit that list to just those pets whose type is listed as "dog" 
-  - print out the size (number) of pets that whose type is "dog"
+  - print out the number (*size*) of pets that whose type is "dog"
 
 4. Now go through and add lines that list how many cats and parrots there are. Add the following: 
 
@@ -185,9 +191,9 @@ When you're done, your pets available section should look like this:
 !["Pets, Dogs, Cats, Parrots Available"](https://github.com/learn-static/foundations-4-computation/blob/main/images/lesson-images/pets-available.png)
 
 
-5. This information could be much simpler though, don't you think. Let's see if we can get it all one line. Try to do it yourself first, by creating a parenthes and listing the number of dogs, cats, and parrots there. 
+5. This information could be much simpler though, don't you think. Let's see if we can get it all one line. Try to do it yourself first, by creating a parentheses and listing the number of dogs, cats, and parrots there. 
 
-Here's how that should look: 
+Here's one way that might look when you're done: 
 
 ```
     <h3>Pets available: {{ pets.size }} ({{ pets | where: 'type', 'dog' | size }} dogs, {{ pets | where: 'type', 'cat' | size }} cats, and {{ pets | where: 'type', 'parrot' | size }} parrot)</h3>
@@ -195,10 +201,11 @@ Here's how that should look:
 
 ## The For Loop! + If/Then Statements
 
-Filtering out lists is a common computational practice, and the above is one way to find the count of a filtered list. But what if you wanted to, say, list the names of all the dogs available. 
+Filtering out lists is a common computational practice, and the above is one way to find the count of a filtered list. 
 
-To do something like this, you can a
-You can also use [forloops](https://shopify.github.io/liquid/tags/iteration/) and [if/then statements](https://shopify.github.io/liquid/tags/control-flow/) to manipulate which parts of your lists get featured and/or printed on the page.
+But what if you wanted to, say, list the names of all the dogs available. 
+
+To do something like this, you can use [forloops](https://shopify.github.io/liquid/tags/iteration/) and [if/then statements](https://shopify.github.io/liquid/tags/control-flow/) to manipulate which parts of your lists get featured and/or printed on the page.
 
 A for loop ***loops*** over an array and does something ***for*** each type of filter you request. 
 
@@ -225,7 +232,9 @@ Our home page uses a for loop and the template we explored above to create a car
 
 ```
 
-You can see that it starts with a `{% for p in pets %}` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. So if you wanted to change the `p` to `pet` to be more verbose, it would look like this: 
+You can see that it starts with a `{% for p in pets %}` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. 
+
+So if you wanted to change the `p` to `pet` to be more verbose, it would look like the example below but **the output would be the exact same!**: 
 
 ```
         {% for pet in pets %}
@@ -247,30 +256,38 @@ You can see that it starts with a `{% for p in pets %}` command. This assigns a 
         {% endfor %}
 ```
 
-So the code producing the card for each pet would look differnt, but **the output would be the exact same!**
+So the code producing the card for each pet would look different, but **the output would be the exact same!**
 
 ## If/Then Statements
 
 A forloop combined with an if/then statement is really powerful way to utilize data on a website. 
 
-If/Then statements can look at the field reference and do a specific action based on the logic included in the statement. So, for instance, if you'd like every card that features a dog to have a red background you would change the `<div class="card">` line in our template to add a bit of inline CSS if the for loop was iterating over a pet whose type was "dog": 
+If/Then statements can look at the item or quality of the item being referenced and do a specific action based on the logic included in the statement. 
+
+So, for instance, if you'd like every card that features a dog to have a red background you would change the `<div class="card">` line in our template to add a bit of inline CSS -- `style="background:red"`.
+
+The example below says if the pet has the type "dog" add the style option; nothing will happen if the type is not "dog": 
 
 ```
             <div class="card" {% if p.type == 'dog' %}style="background:red"{% endif %}>
 ```
 
-Notice that an if statement, just like a for statement, needs to be ended with **end** statement. This is called closing a function. So `{% endif %}` closes an `{% if ... %}` statement and `{% endfor %}` closes a `{% for ... %}` statement.
+Notice that an `if` statement, just like a `for` statement, needs to be ended with **end** statement. This is called closing a function. So:
+- `{% endif %}` closes an `{% if ... %}` statement
+- `{% endfor %}` closes a `{% for ... %}` statement.
 
-The if/then statement above uses the operator `==` to say if the type is exactly dog, do this. There are a number of operators that can be used on their own and in combination. Here's a list: 
+The if/then statement above uses the operator `==` to say if the type is exactly "dog". There are a number of operators that can be used on their own and in combination. Here's a list: 
 
-== |equals
-!= |does not equal
-> |greater than
-< |less than
->= |greater than or equal to
-<= |less than or equal to
-or |logical or
-and |logical and
+| operator | what it does|
+|---|---|
+|== |equals|
+|!= |does not equal|
+|> |greater than|
+|< |less than|
+|>= |greater than or equal to|
+|<= |less than or equal to|
+|or |logical or|
+|and |logical and |
 
 It takes some time to get familiar with those, and many of them are meant for math type logic. In our case, for building a website, using the equals (`==`) and does not equal (`!=`) operators together with `and` and `or` is pretty powerful. 
 
