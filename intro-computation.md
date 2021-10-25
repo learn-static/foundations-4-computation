@@ -14,7 +14,7 @@ After completing this module, one should be able to:
 
 >>> ALERT on Iterate -- I'm going to use this word a lot, because that's what Jekyll does. To iterate means to "perform repeatedly." In our case then, Jekyll goes over the data in your site over and over, repeatedly, in order to use that data together with the templates we'll introduce soon, and thus to repeatedly create web pages featuring these templates and other repeated features (such as a header and footer).
 
-Note that both types of web "generators" -- static and dynamic -- use the concepts we'll explain below (variables, templates, for loops, and if-then statements) to create content for their site. Jekyll just does this work before hand. It prebuilds the pages as opposed to building them on the fly (dynamically!) like Facebook, Wordpress, Twitter, etc. 
+Note that both types of web "generators" -- static and dynamic -- use the concepts we'll explain below (variables, templates, forloops, and if-then statements) to create content for their site. Jekyll just does this work before hand. It prebuilds the pages as opposed to building them on the fly (dynamically!) like Facebook, Wordpress, Twitter, etc. 
 
 For more on Static Sites and Jekyll, see [Evan's GitHub Pages Workshop](https://evanwill.github.io/go-go-ghpages-b/content/2-jekyll.html). For our purposes, it's enough to know that Jekyll works over a series of config files, content files (mostly written in Markdown), layout and feature templates (mostly written in HTML), and data files to create websites -- and these are often generated in repositories on GitHub and published via GitHub Pages. 
 
@@ -199,7 +199,7 @@ Here's one way that might look when you're done:
     <h3>Pets available: {{ pets.size }} ({{ pets | where: 'type', 'dog' | size }} dogs, {{ pets | where: 'type', 'cat' | size }} cats, and {{ pets | where: 'type', 'parrot' | size }} parrot)</h3>
 ```
 
-## The For Loop! + If/Then Statements
+## The Forloop! + If/Then Statements
 
 Filtering out lists is a common computational practice, and the above is one way to find the count of a filtered list. 
 
@@ -207,9 +207,9 @@ But what if you wanted to, say, list the names of all the dogs available.
 
 To do something like this, you can use [forloops](https://shopify.github.io/liquid/tags/iteration/) and [if/then statements](https://shopify.github.io/liquid/tags/control-flow/) to manipulate which parts of your lists get featured and/or printed on the page.
 
-A for loop ***loops*** over an array and does something ***for*** each type of filter you request. 
+A forloop ***loops*** over an array and does something ***for*** each type of filter you request. 
 
-Our home page uses a for loop and the template we explored above to create a card for each pet. Lets look at it
+Our home page uses a forloop and the template we explored above to create a card for each pet. Lets look at it
 
 ```
         {% for p in pets %}
@@ -293,15 +293,17 @@ It takes some time to get familiar with those, and many of them are meant for ma
 
 Liquid also has an operator that's great for working with text. It's called `contains` and it helps to perform if/then statements on texts. 
 
-So in the example above, we could have written {% if p.type contains 'dog' %}style="background:red"{% endif %} and gotten the same red background for each card for a dog. 
+So in the example above, we could have written `{% if p.type contains 'dog' %}style="background:red"{% endif %}` and gotten the same red background for each card for a dog. 
 
 Let's use our activity to explore this a bit further
 
 **ACTIVITY**
 
-The red background is a bit much. Let's remove it by changing the  But there's a subtle change we can make that will help polish our site. 
+The red background is a bit much. Let's remove it by deleting the if statement at the top of the card. (you may not have added it; in which case, nothing to be done!)
 
-One small detail on our cards that's bugging me is that each button says "Call ___ to Rent!" but some people's contact method is email. Let's use an If/Then statement to change that. 
+There is a subtle change we can make that will help polish our site, however: Each button says "Call ___ to Rent!" but some people's contact method is email. 
+
+Let's use an If/Then statement to change that. 
 
 1. Find the button portion of our template. IT looks like 
 
@@ -313,8 +315,8 @@ One small detail on our cards that's bugging me is that each button says "Call _
 
 2. Let's add an if/then statement that will say "Call" or "Email" depending on what the "contact" field contains for each pet listing. 
 
-   - first we have to determine what piece of text we could distinguish the two types of information we want to filter: 
-   - So we ask: what could a field with an email address contain that would always differentiate it from a phone number
+   - first we have to determine what piece of text we can use to distinguish the two types of information we want to filter: 
+   - So we ask: what could a field with an email address contain that would always differentiate it from a phone number?
    - An @ sign should work! 
    - Let's try it: 
 
@@ -322,7 +324,7 @@ One small detail on our cards that's bugging me is that each button says "Call _
                     <a href="#" class="btn btn-primary">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
 ```
 
-You see we've add an `{% else %}` command. This is essentially saying to the for loop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
+You see we've add an `{% else %}` command. This is essentially saying to the forloop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
 
 3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `{% elsif %}`
 
