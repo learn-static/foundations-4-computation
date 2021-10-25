@@ -99,6 +99,8 @@ Jekyll uses the templating language Liquid to create templates.
 
 On our home page, there are several "cards" that display the animals' names, photos, and age. However, the order these elements appear seems wrong. Reorder the template in order to present the information in a more sensible order. 
 
+>>> Remember we are working with the [pets.csv](_data/pets.csv) that was corrected in the [Data module](https://github.com/learn-static/foundations-3-data) that you may have completed previous to this module. If you did not do that module, go to the _data folder and look at the pets.csv file to get familiar with the data listed. 
+
 1. Open the `index.html` file that can be found at the root (home page) of your repository. 
 2. Find the variables `{{p.name}}` and `{{p.type}}`
     1. If you look at the web page, you can see the pet's name is below the type. Let's switch them. 
@@ -138,7 +140,9 @@ Your template should now look like this:
 
 ## Array
 
-You just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal, or, to put it in terms of the spreadsheet you worked in during the last module, a list of rows, and a list of cells for each row. 
+You just were working with an array. An array, simply, is a list that a computer program can *iterate* over. In the case above, the computer iterated over our data, which is actually a list of lists: A list of animals, and a list of qualities for each animal.
+
+To put this in terms of the spreadsheet you worked in during the "data" module, a list of rows, and a list of cells for each row. 
 
 An array is powerful because you can sort it and use logic with it to create curated features. Let's explore some of the ways Jekyll can use the Liquid Templating language to generate and curate lists. 
 
