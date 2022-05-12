@@ -280,8 +280,8 @@ The example below is saying: "if the pet has the type "dog" add the style option
 ```
 
 Notice that an `if` statement, just like a `for` statement, needs to be ended with **end** statement. This is called closing a function. So:
-- `{% endif %}` closes an `{% if ... %}` statement
-- `{% endfor %}` closes a `{% for ... %}` statement.
+- an `{% if ... %}` statement is closed by an `{% endif %}`
+- a `{% for ... %}` statement is closed by a `{% endfor %}`.
 
 The if/then statement above uses the operator `==` to say if the type is exactly "dog". There are a number of operators that can be used on their own and in combination. Here's a list: 
 
