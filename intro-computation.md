@@ -239,7 +239,7 @@ Our home page uses a forloop and the template we explored above to create a card
 
 ```
 
-You can see that it starts with a `for p in pets` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. 
+You can see that it starts with a `{% for p in pets %}` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. 
 
 So if you wanted to change the `p` to `pet` to be more verbose, it would look like the example below but **the output would be the exact same!**: 
 
@@ -280,17 +280,8 @@ The example below is saying: "if the pet has the type "dog" add the style option
 ```
 
 Notice that an `if` statement, just like a `for` statement, needs to be ended with **end** statement. This is called closing a function. So:
-- an if statement is closed by an endif, e.g.: 
-
-```
-        {% if p.type contains 'dog' %}purple{% else %}green{% endif %}"
-```
-
-- a for statement is closed by an endfor, e.g.: 
-
-```
-        {% for dog in dogs %}{{dog.name}}{% endfor %}"
-```
+- `{% endif %}` closes an `{% if ... %}` statement
+- `{% endfor %}` closes a `{% for ... %}` statement.
 
 The if/then statement above uses the operator `==` to say if the type is exactly "dog". There are a number of operators that can be used on their own and in combination. Here's a list: 
 
@@ -340,9 +331,9 @@ Let's use an If/Then statement to change that.
                     <a href="#" class="btn btn-primary">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
 ```
 
-You see we've add an `else` command. This is essentially saying to the forloop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
+You see we've add an `{% else %}` command. This is essentially saying to the forloop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
 
-3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `elsif`
+3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `{% elsif %}`
 
 This command will let us add a little more logic to the forloop. We'll make the button for a dog purple, the button for a cat yellow and the button for a parrot green, like so: 
 
@@ -350,7 +341,7 @@ This command will let us add a little more logic to the forloop. We'll make the 
                     <a href="#" class="btn btn-primary" style="background-color:{% if p.type contains 'dog' %}purple{% elsif p.type contains 'cat' %}yellow{% else %}green{% endif %}">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
 ```
 
-Note that I didn't have to add a final `elsif` statement for the "parrot" type because I knew that was the only one left after cat and dog. You could, however, add an elsif statement there for a parrot (`elsif p.type contains 'parrot'` -- note that this will need to be contained in brackets with percentage signs) and continue on for any additional pet added to the array. 
+Note that I didn't have to add a final `elsif` statement for the "parrot" type because I knew that was the only one left after cat and dog. You could, however, add an elsif statement there for a parrot (`{%  elsif p.type contains 'parrot'  %}`) and continue on for any additional pet added to the array. 
 
 ## Conclusion
 
