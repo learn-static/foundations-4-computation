@@ -239,7 +239,7 @@ Our home page uses a forloop and the template we explored above to create a card
 
 ```
 
-You can see that it starts with a `{% for p in pets %}` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. 
+You can see that it starts with a `for p in pets` command. This assigns a "p" variable to each pet as the loop is run. The variable doesn't make much difference. It just has to be consistently called. 
 
 So if you wanted to change the `p` to `pet` to be more verbose, it would look like the example below but **the output would be the exact same!**: 
 
