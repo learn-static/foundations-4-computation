@@ -340,9 +340,9 @@ Let's use an If/Then statement to change that.
                     <a href="#" class="btn btn-primary">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
 ```
 
-You see we've add an `{% else %}` command. This is essentially saying to the forloop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
+You see we've add an `else` command. This is essentially saying to the forloop that if the contact field contains an "@" write `Email`, but in any other possible case, write `Call`.
 
-3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `{% elsif %}`
+3. Now let's get a little more complicated and change the color of the button depending on the type of the pet. We will add a new if/then command for this one --> `elsif`
 
 This command will let us add a little more logic to the forloop. We'll make the button for a dog purple, the button for a cat yellow and the button for a parrot green, like so: 
 
@@ -350,7 +350,7 @@ This command will let us add a little more logic to the forloop. We'll make the 
                     <a href="#" class="btn btn-primary" style="background-color:{% if p.type contains 'dog' %}purple{% elsif p.type contains 'cat' %}yellow{% else %}green{% endif %}">{% if p.contact contains '@' %}Email{% else %}Call{% endif %} {{p.owner}} to Rent!</a>
 ```
 
-Note that I didn't have to add a final `elsif` statement for the "parrot" type because I knew that was the only one left after cat and dog. You could, however, add an elsif statement there for a parrot (`{%  elsif p.type contains 'parrot'  %}`) and continue on for any additional pet added to the array. 
+Note that I didn't have to add a final `elsif` statement for the "parrot" type because I knew that was the only one left after cat and dog. You could, however, add an elsif statement there for a parrot (`elsif p.type contains 'parrot'` -- note that this will need to be contained in brackets with percentage signs) and continue on for any additional pet added to the array. 
 
 ## Conclusion
 
